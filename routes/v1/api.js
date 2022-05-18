@@ -16,7 +16,11 @@ router.post('/login',User.login)
 router.get('/list_users',User.getUsers)
 
 router.post('/new_subject',Subject.newSubject)
-router.put('/edit_subject/:id',Subject.editSubject)
+router.put('/edit_subject',Subject.editSubject)
+router.get('/subjects',Subject.getSubjects)
+router.get('/subject/:id',Subject.sigleSubject)
+router.delete('/subject/:id',Subject.removeSubject)
+
 
 router.post('/new_exam',Exam.newExam)
 router.put('/update_exam/:id',Exam.updateExam)

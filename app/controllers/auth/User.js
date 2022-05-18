@@ -11,6 +11,7 @@ const Op = Sequelize.Op;
 module.exports={
     register:async (req,res,next)=>{
         try {
+
             const result = await authSchema.validateAsync(req.body);
             const userExist=await User.findOne({where:{email:req.body.email}})
             if(userExist) throw new createError.BadRequest("This email has already been registered !")
@@ -59,14 +60,13 @@ module.exports={
             },
         },
      
-        attributes:['id','name','email'],
+        attributes:['id','name','email','user_type'],
         limit: size,
         offset: page * size
     });
 
      res.send({
         data: users,
-        rows:users.count,
         currentPage:page,
         totalPages:  totalPage(users.count),
       });

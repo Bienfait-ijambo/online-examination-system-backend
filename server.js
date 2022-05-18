@@ -14,7 +14,7 @@ app.use(cors())
 app.use(bodyParse.json())
 app.use(bodyParse.urlencoded({extended:true}))
 
-app.use('/',api)
+app.use('/api',api)
 
 app.use(async (req, res, next) => {
 	next(createError.NotFound())

@@ -19,7 +19,7 @@ module.exports = {
     }
   },
 
-  displayExam:async (req,res)=>{
+displayExam:async (req,res)=>{
     // http://127.0.0.1:5000/get_exams?search=&size=0
     const {search}=req.query
     const {page,size,totalPage}=helper.paginate(req.query)

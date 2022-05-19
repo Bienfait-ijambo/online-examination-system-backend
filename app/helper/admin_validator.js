@@ -5,7 +5,7 @@ const subjectSchema=Joi.object({
 })
 
 const examSchema=Joi.object({
-    id:Joi.number(),
+    id:Joi.any().optional(),
     courseId:Joi.number(),
     duration:Joi.number(),
     total_question:Joi.number(),

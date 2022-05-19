@@ -24,7 +24,7 @@ router.get('/all_subject',Subject.allSubject)
 
 
 router.post('/new_exam',Exam.newExam)
-router.put('/update_exam/:id',Exam.updateExam)
+router.put('/update_exam',Exam.updateExam)
 router.delete('/delete_exam/:id',Exam.deleteExam)
 router.get('/get_exams',Exam.displayExam)
 

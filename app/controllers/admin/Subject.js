@@ -46,6 +46,10 @@ module.exports={
         const subject =await Subject.findOne({where:{id:req.params.id},attributes:['id','subjectName']})
         res.status(200).send({data:subject})
     },
+    allSubject:async(req,res)=>{
+        const subject =await Subject.findAll({attributes:['id','subjectName']})
+        res.status(200).send({data:subject})
+    },
      getSubjects:async(req,res)=>{
         // http://localhost:5000/list_users?search=&filter_by_type=Admin&size=0
         const {search}=req.query

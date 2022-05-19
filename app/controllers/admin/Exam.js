@@ -6,9 +6,9 @@ var helper=require('../../helper/paginate')
 const { query } = require("express");
 const Op = Sequelize.Op;
 module.exports = {
+
   newExam: async (req, res, next) => {
     try {
-
       const result = await examSchema.validateAsync(req.body);
       const exam = await Exam.create(req.body);
       res.status(201).send({exam:exam,message:"Exam created successfully !"})
@@ -39,7 +39,6 @@ module.exports = {
       });
       res.send({
         data: exams,
-        rows:exams.count,
         currentPage:page,
         totalPages:  totalPage(exams.count),
       });

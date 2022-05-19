@@ -20,6 +20,7 @@ router.put('/edit_subject',Subject.editSubject)
 router.get('/subjects',Subject.getSubjects)
 router.get('/subject/:id',Subject.sigleSubject)
 router.delete('/subject/:id',Subject.removeSubject)
+router.get('/all_subject',Subject.allSubject)
 
 
 router.post('/new_exam',Exam.newExam)

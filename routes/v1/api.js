@@ -31,7 +31,7 @@ router.get('/get_exams',Exam.displayExam)
 
 
 router.post('/question',Question.newQuestion)
-router.put('/question/:id',Question.updateQuestion)
+router.put('/question',Question.updateQuestion)
 router.delete('/question/:id',Question.deleteQuestion)
 router.get('/question',Question.displayQuestion)
 

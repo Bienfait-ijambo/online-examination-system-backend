@@ -22,27 +22,34 @@ module.exports = {
 
   displayOptions:async(req,res,next)=>{
 
-     const {search,examId}=req.query
-    const {page,size,totalPage}=helper.paginate(req.query)
+    try{
+      const {search,examId}=req.query
+      const {page,size,totalPage}=helper.paginate(req.query)
 
-    const questions=await Question.findAndCountAll({
-      include:{
-        model:Option
-      },
-       where:{examId:examId}, 
-       where: {
+      const questions=await Question.findAndCountAll({
+        include:{
+          model:Option
+        },
+         where:{examId:examId}, 
+         where: {
           question_title:{
             [Op.like]: `%${search}%`,
           }
         },
+        order:[['id', 'DESC']],
         limit: size,
         offset: page * size
-    })
-    res.status(200).send({
-      data:questions,
-      currentPage:page,
-      totalPages:totalPage(questions.count)
-    });
+      })
+      res.status(200).send({
+        data:questions,
+        currentPage:page,
+        totalPages:totalPage(questions.count)
+      });
+
+    }catch(error){
+      error.status = 400
+      next(error)
+    }
     
   },
 

@@ -30,14 +30,15 @@ router.get('/get_exams',Exam.displayExam)
 
 
 
-router.post('/new_question',Question.newQuestion)
-router.put('/update_question/:id',Question.updateQuestion)
-router.delete('/delete_question/:id',Question.deleteQuestion)
-router.get('/get_questions',Question.displayQuestion)
+router.post('/question',Question.newQuestion)
+router.put('/question/:id',Question.updateQuestion)
+router.delete('/question/:id',Question.deleteQuestion)
+router.get('/question',Question.displayQuestion)
 
-router.post('/new_option',Option.addOption)
-router.put('/update_option/:id',Option.updateOption)
-router.delete('/delete_option/:id',Option.deleteOption)
+router.post('/options',Option.addOption)
+router.put('/options/:id',Option.updateOption)
+router.get('/options',Option.displayOptions)
+router.delete('/options/:id',Option.deleteOption)
 // router.get('/get_questions',Question.displayQuestion)
 
 module.exports=router

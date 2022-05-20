@@ -20,32 +20,33 @@ module.exports = {
     }
   },
 
-  //view option for a single question
-//   displayQuestion:async (req,res)=>{
-//     // http://127.0.0.1:5000/get_questions?exam_id=1&search=&size=0
-//     const {search}=req.query
-//     const {page,size,totalPage}=helper.paginate(req.query)
+  displayOptions:async(req,res,next)=>{
 
-//        const questions=await Question.findAndCountAll({
-//         include: {
-//           model: Exam,
-//         },
-//         where:{examId:req.query.exam_id}, 
-//         where: {
-//           question_title:{
-//             [Op.like]: `%${search}%`,
-//           }
-//         },
-//         limit: size,
-//         offset: page * size
-//       });
-//       res.send({
-//         data: questions,
-//         currentPage:page,
-//         totalPages:  totalPage(questions.count),
-//       });
+     const {search,examId}=req.query
+    const {page,size,totalPage}=helper.paginate(req.query)
+
+    const questions=await Question.findAndCountAll({
+      include:{
+        model:Option
+      },
+       where:{examId:examId}, 
+       where: {
+          question_title:{
+            [Op.like]: `%${search}%`,
+          }
+        },
+        limit: size,
+        offset: page * size
+    })
+    res.status(200).send({
+      data:questions,
+      currentPage:page,
+      totalPages:totalPage(questions.count)
+    });
     
-//   },
+  },
+
+ 
 
   updateOption:async(req,res,next)=>{
     try {

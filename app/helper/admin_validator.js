@@ -15,7 +15,7 @@ const examSchema=Joi.object({
 
 
 const QuestionSchema=Joi.object({
-    id:Joi.number(),
+    id:Joi.any().optional(),
     examId:Joi.number().required(),
     question_title:Joi.string().required(),
     answer_option:Joi.number().required(),
